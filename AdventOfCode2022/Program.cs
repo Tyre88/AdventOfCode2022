@@ -22,6 +22,11 @@ app.MapGet("/one", (One one) =>
 {
     return one.CalculateTopOneElf();
 
-});
+}).WithTags("Day one");
+
+app.MapGet("/two", (One one) =>
+{
+    return one.CalculateTopThreeElves();
+}).WithTags("Day one");
 
 app.Run();

@@ -9,6 +9,11 @@ namespace AdventOfCode2022.Services
             return GetEachElfTotalCal().Max();
         }
 
+        public int CalculateTopThreeElves()
+        {
+            return GetEachElfTotalCal().OrderByDescending(x => x).Take(3).Sum();
+        }
+
         private List<int> GetEachElfTotalCal()
         {
             List<int> listOfTotalCalsPerElf = new List<int>();
