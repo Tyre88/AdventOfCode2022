@@ -28,6 +28,20 @@
             return totalScore;
         }
 
+        public int CalculateScorePartTwo()
+        {
+            int totalScore = 0;
+            List<RockPaperScissorFight> fights = GetData();
+
+            foreach (var fight in fights)
+            {
+                fight.MakeDraw();
+                totalScore += (baseScore[fight.MyValue] + scoringPoints[fight.Fight()]);
+            }
+
+            return totalScore;
+        }
+
         private List<RockPaperScissorFight> GetData()
         {
             List<RockPaperScissorFight> fights = new List<RockPaperScissorFight>();
@@ -55,6 +69,31 @@
     {
         public string ElfValue { get; set; }
         public string MyValue { get; set; }
+
+        public void MakeDraw()
+        {
+            //Need to loose
+            if(MyValue == "X")
+            {
+                if (ElfValue == "A") MyValue = "Z";
+                else if (ElfValue == "B") MyValue = "X";
+                else if (ElfValue == "C") MyValue = "Y";
+            }
+            //Need to make a tie
+            else if(MyValue == "Y")
+            {
+                if (ElfValue == "A") MyValue = "X";
+                else if (ElfValue == "B") MyValue = "Y";
+                else if (ElfValue == "C") MyValue = "Z";
+            }
+            //Need to win
+            else if(MyValue == "Z")
+            {
+                if (ElfValue == "A") MyValue = "Y";
+                else if (ElfValue == "B") MyValue = "Z";
+                else if (ElfValue == "C") MyValue = "X";
+            }
+        }
 
         public RockPaperScissorPlacement Fight()
         {

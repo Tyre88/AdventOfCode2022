@@ -35,4 +35,9 @@ app.MapGet("/daytwo/one", (Two two) =>
     return two.CalculateRockPaperScissorsScore();
 }).WithTags("Day two");
 
+app.MapGet("/daytwo/two", (Two two) =>
+{
+    return two.CalculateScorePartTwo();
+}).WithTags("Day two");
+
 app.Run();
