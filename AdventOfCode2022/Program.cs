@@ -8,6 +8,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<One>();
+builder.Services.AddTransient<Two>();
 
 var app = builder.Build();
 
@@ -18,15 +19,20 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.MapGet("/one", (One one) =>
+app.MapGet("/dayone/one", (One one) =>
 {
     return one.CalculateTopOneElf();
 
 }).WithTags("Day one");
 
-app.MapGet("/two", (One one) =>
+app.MapGet("/dayone/two", (One one) =>
 {
     return one.CalculateTopThreeElves();
 }).WithTags("Day one");
+
+app.MapGet("/daytwo/one", (Two two) =>
+{
+    return two.CalculateRockPaperScissorsScore();
+}).WithTags("Day two");
 
 app.Run();
