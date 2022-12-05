@@ -10,6 +10,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<One>();
 builder.Services.AddTransient<Two>();
 builder.Services.AddTransient<Three>();
+builder.Services.AddTransient<Four>();
 
 var app = builder.Build();
 
@@ -49,5 +50,15 @@ app.MapGet("/daythree/two", (Three three) =>
 {
     return three.GetElfPackTotalScore();
 }).WithTags("Day three");
+
+app.MapGet("/dayfour/one", (Four four) =>
+{
+    return four.GetFullyOverlappingElfCount();
+}).WithTags("Day four");
+
+app.MapGet("/dayfour/two", (Four four) =>
+{
+    return four.GetOverlappingElfCount();
+}).WithTags("Day four");
 
 app.Run();
