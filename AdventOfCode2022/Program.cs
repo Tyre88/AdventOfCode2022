@@ -9,6 +9,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<One>();
 builder.Services.AddTransient<Two>();
+builder.Services.AddTransient<Three>();
 
 var app = builder.Build();
 
@@ -39,5 +40,14 @@ app.MapGet("/daytwo/two", (Two two) =>
 {
     return two.CalculateScorePartTwo();
 }).WithTags("Day two");
+
+app.MapGet("/daythree/one", (Three three) => {
+    return three.GetBackpacksTotalScore();
+}).WithTags("Day three");
+
+app.MapGet("/daythree/two", (Three three) =>
+{
+    return three.GetElfPackTotalScore();
+}).WithTags("Day three");
 
 app.Run();
