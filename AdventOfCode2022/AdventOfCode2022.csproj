@@ -13,6 +13,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="data\five-cargos.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\five.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="data\four.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

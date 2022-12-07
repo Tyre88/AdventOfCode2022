@@ -69,14 +69,12 @@
             int secoundElfStartIndex = int.Parse(SecoundElf.Split('-')[0]);
             int secoundElfEndIndex = int.Parse(SecoundElf.Split('-')[1]);
 
-            if (firstElfStartIndex <= secoundElfStartIndex && firstElfEndIndex >= secoundElfStartIndex)
+            if ((firstElfStartIndex <= secoundElfStartIndex && firstElfEndIndex >= secoundElfStartIndex)
+                || (secoundElfStartIndex <= firstElfStartIndex && secoundElfEndIndex >= firstElfStartIndex))
             {
                 return true;
             }
-            else if (secoundElfStartIndex <= firstElfStartIndex && secoundElfEndIndex >= firstElfStartIndex)
-            {
-                return true;
-            }
+            
             else return false;
         }
     }

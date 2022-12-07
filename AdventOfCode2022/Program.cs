@@ -11,6 +11,7 @@ builder.Services.AddTransient<One>();
 builder.Services.AddTransient<Two>();
 builder.Services.AddTransient<Three>();
 builder.Services.AddTransient<Four>();
+builder.Services.AddTransient<Five>();
 
 var app = builder.Build();
 
@@ -60,5 +61,15 @@ app.MapGet("/dayfour/two", (Four four) =>
 {
     return four.GetOverlappingElfCount();
 }).WithTags("Day four");
+
+app.MapGet("/dayfive/one", (Five five) =>
+{
+    return five.GetCargoLettersAfterFullMove();
+}).WithTags("Day five");
+
+app.MapGet("/dayfive/two", (Five five) =>
+{
+    return five.GetCargoLetters9001();
+}).WithTags("Day five");
 
 app.Run();
