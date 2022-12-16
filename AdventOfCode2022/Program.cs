@@ -12,6 +12,7 @@ builder.Services.AddTransient<Two>();
 builder.Services.AddTransient<Three>();
 builder.Services.AddTransient<Four>();
 builder.Services.AddTransient<Five>();
+builder.Services.AddTransient<Six>();
 
 var app = builder.Build();
 
@@ -71,5 +72,10 @@ app.MapGet("/dayfive/two", (Five five) =>
 {
     return five.GetCargoLetters9001();
 }).WithTags("Day five");
+
+app.MapGet("/daysix/one/{amount}", (int amount, Six six) =>
+{
+    return six.GetFirstMarker(amount);
+}).WithTags("Day six");
 
 app.Run();
